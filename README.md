@@ -13,7 +13,7 @@ An independent product and interaction prototype for a conversational fashion st
 	<img alt="Portfolio concept" src="https://img.shields.io/badge/status-portfolio%20prototype-C3234D" />
 </p>
 
-<p><a href="#try-it">Run the prototype</a> · <a href="#experience">Explore the experience</a> · <a href="context.md">Read the product context</a></p>
+<p><a href="https://jagriti-singh12.github.io/prd-myntra-personalized-ai/">Open the live portfolio site</a> · <a href="#try-it">Run locally</a> · <a href="#experience">Explore the experience</a></p>
 
 </div>
 
@@ -63,6 +63,8 @@ npm.cmd run dev
 ```
 
 Open the local URL printed by Vite. On macOS or Linux, replace `npm.cmd` with `npm`.
+
+The GitHub Pages site deploys automatically from `main` after the Pages workflow completes. The site URL is `https://jagriti-singh12.github.io/prd-myntra-personalized-ai/`.
 
 Run checks and create a production build:
 
