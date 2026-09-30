@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f8f9f7" />
+    <meta name="description" content="A portfolio prototype for personalized, conversational fashion discovery." />
+    <title>Myntra AI Stylist | Personalised shopping, your way</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#discover" data-view="discover" aria-label="Myntra AI Stylist home"><span class="brand-mark">M</span><span class="brand-copy"><strong>myntra</strong><small>AI STYLIST</small></span></a>
+        <nav class="desktop-nav" aria-label="Main navigation"><button class="nav-link is-active" type="button" data-view="discover" aria-current="page">Discover</button><button class="nav-link" type="button" data-view="missions">My missions <span class="nav-count">1</span></button></nav>
+        <div class="header-actions"><span class="demo-label"><span></span> PERSONAL STYLE, REMEMBERED</span><button class="bag-button" type="button" aria-label="Shopping bag, 0 items">Bag <span class="bag-count" id="bag-count">0</span></button><button class="avatar-button" type="button" data-open-profile aria-label="Edit your style profile">A</button></div>
+      </header>
+
+      <main>
+        <section class="view" id="discover-view" aria-labelledby="discover-title">
+          <div class="intro-row"><div class="intro-copy"><p class="eyebrow"><span class="sparkle">✳</span> YOUR PERSONAL STYLIST</p><h1 id="discover-title">The edit, <em>in your style.</em></h1><p class="intro-description">Good to see you, Ananya. I kept your love for jewel tones in mind.</p></div><button class="memory-summary" type="button" data-open-profile><span class="memory-icon">✦</span><span><strong>Your style profile</strong><small id="profile-summary">Size M · Jewel tones · View or edit</small></span><span class="arrow">↗</span></button></div>
+
+          <form class="prompt-panel" id="query-form"><label class="prompt-label" for="query-input"><span class="status-dot"></span> WHAT ARE WE LOOKING FOR TODAY?</label><div class="prompt-input-row"><span class="prompt-spark">✳</span><input id="query-input" name="query" type="search" autocomplete="off" placeholder="Try “wedding guest look under ₹5,000”" aria-label="Describe what you are shopping for" /><button class="icon-action upload-action" type="button" aria-label="Add a reference image" title="Add a reference image">＋</button><input class="visually-hidden" id="image-input" type="file" accept="image/*" /><button class="icon-action voice-action" type="button" aria-label="Use a sample voice request" title="Use a sample voice request">◖</button><button class="submit-prompt" type="submit" aria-label="Find styles">↗</button></div><div class="prompt-foot"><span>Text, image or voice. Your call.</span><span class="prompt-hint">Try a quick brief <b>↗</b></span></div></form>
+
+          <div class="context-strip"><div class="context-heading"><span class="context-icon">✦</span><span><strong>Styled around you</strong><small>Preferences are shaping this edit</small></span></div><div class="context-tags"><span class="context-tag"><i class="swatch"></i> <span id="palette-summary">Jewel tones</span></span><span class="context-tag">Size <span id="size-summary">M</span> <b>✓</b></span><span class="context-tag">Under <span id="budget-summary">₹5,000</span> <b>✓</b></span></div><button class="text-button" type="button" data-open-profile>Edit profile <span>↗</span></button></div>
+
+          <div class="catalog-heading"><div><p class="eyebrow">A LITTLE LESS SCROLLING, A LOT MORE YOU</p><h2>Picked for Ananya <span class="count-label" id="result-count">0 styles</span></h2></div><label class="sort-control">Sort by <select id="sort-select" aria-label="Sort products"><option value="match">Best match</option><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option></select></label></div>
+          <div class="filter-row" role="group" aria-label="Filter by category"><button class="filter-chip is-selected" type="button" data-category="All" aria-pressed="true">All finds</button><button class="filter-chip" type="button" data-category="Ethnic" aria-pressed="false">Ethnic wear</button><button class="filter-chip" type="button" data-category="Western" aria-pressed="false">Western</button><button class="filter-chip" type="button" data-category="Accessories" aria-pressed="false">Finishing touches</button><button class="filter-chip budget-chip" type="button" data-budget="4000" aria-pressed="false">Under ₹4,000 <span>⌄</span></button></div>
+          <div class="active-query" id="active-query" hidden></div><div class="product-grid" id="product-grid" aria-live="polite"></div>
+          <div class="empty-state" id="empty-state" hidden><span>⌕</span><h3>Nothing in this edit just yet</h3><p>Try another phrase or clear your filters to see more styles.</p><button class="outline-button" type="button" data-clear-filters>Clear filters</button></div>
+          <div class="catalog-note"><span>✳</span> A thoughtful edit, made from your saved style preferences. <button type="button" data-open-profile>Manage what I remember</button></div>
+        </section>
+
+        <section class="view missions-view" id="missions-view" aria-labelledby="missions-title" hidden>
+          <div class="mission-heading"><div><p class="eyebrow"><span class="status-dot"></span> YOUR SHOPPING, PICKING UP WHERE YOU LEFT IT</p><h1 id="missions-title">Your missions <em>and memories.</em></h1><p class="intro-description">Your style notes stay yours. Your shopping task stays right here.</p></div><button class="primary-button" type="button" data-view="discover"><span>＋</span> Start a new mission</button></div>
+          <div class="mission-layout">
+            <section class="mission-main" aria-labelledby="active-mission-title"><div class="section-kicker"><span>IN PROGRESS</span><span class="mission-id">MISSION · 08 JUN</span></div>
+              <article class="active-mission"><div class="mission-progress-line"><span id="mission-progress-bar"></span></div><div class="mission-card-top"><div><span class="mission-status"><i class="status-dot"></i><span id="mission-status-text">Ready for your review</span></span><h2 id="active-mission-title">Wedding guest, sorted.</h2><p>4 looks curated · Bengaluru · Budget up to ₹5,000</p></div><span class="mission-completion">4 <small>looks</small></span></div>
+                <div class="mission-looks"><figure><img src="/src/assets/products/product-06.jpg" alt="Emerald festive outfit suggestion" /><figcaption>01 · Emerald edit</figcaption></figure><figure><img src="/src/assets/products/product-05.jpg" alt="Green embroidered outfit suggestion" /><figcaption>02 · Modern classic</figcaption></figure><figure><img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=500&q=80" alt="Festive outfit suggestion" /><figcaption>03 · A softer mood</figcaption></figure><div class="look-more"><span>✳</span><strong>One more<br />look coming</strong><small>Matching your notes</small></div></div>
+                <div class="mission-steps" aria-label="Mission activity"><div class="mission-step is-done"><span>✓</span><div><strong>Brief understood</strong><small>Wedding guest · jewel tones · size M</small></div><time>10:42</time></div><div class="mission-step is-done"><span>✓</span><div><strong>Your style applied</strong><small>Used your saved palette and fit preferences</small></div><time>10:42</time></div><div class="mission-step is-current"><span>3</span><div><strong>Ready for your review</strong><small>Choose a look or refine this edit</small></div><time>Now</time></div></div>
+                <div class="mission-actions"><button class="quiet-button" type="button" data-toggle-activity aria-expanded="false">View activity <span>⌄</span></button><button class="quiet-button pause-button" type="button" data-pause-mission><span>Ⅱ</span> Pause mission</button><button class="primary-button" type="button" data-resume-mission>Review your looks <span>↗</span></button></div>
+                <div class="activity-log" id="activity-log" hidden><strong>Mission activity</strong><p>10:42 · Request received: wedding guest outfit under ₹5,000.</p><p>10:42 · Applied saved size M and jewel-tone preferences.</p><p>10:43 · Four looks ready for your review. No items have been purchased.</p></div>
+              </article>
+              <div class="section-kicker past-kicker"><span>RECENTLY COMPLETED</span><button class="text-button" type="button" data-repeat-mission>Repeat this mission <span>↗</span></button></div><article class="past-mission"><div class="past-icon">✓</div><div><h3>Soft layers for your workweek</h3><p>3 styles reviewed · Completed yesterday</p></div><button type="button" data-repeat-mission aria-label="Repeat workweek styling mission">↻</button></article>
+            </section>
+            <aside class="profile-panel" aria-labelledby="profile-panel-title"><div class="profile-panel-heading"><div><p class="eyebrow">YOUR STYLE, YOUR CALL</p><h2 id="profile-panel-title">What I remember</h2></div><span class="privacy-mark" aria-label="Private profile">⌑</span></div><p class="profile-description">A few useful notes make every new search feel a little more like you.</p>
+              <div class="profile-attribute"><span class="attribute-icon size-icon">M</span><span><small>YOUR FIT</small><strong>Size <span data-profile-size>M</span> · 5'4"</strong></span><button type="button" data-open-profile>Edit</button></div>
+              <div class="profile-attribute"><span class="attribute-icon palette-icon"><i></i><i></i><i></i></span><span><small>YOUR PALETTE</small><strong data-profile-palette>Jewel tones</strong></span><button type="button" data-open-profile>Edit</button></div>
+              <div class="profile-attribute"><span class="attribute-icon spend-icon">₹</span><span><small>YOUR USUAL SPEND</small><strong>₹3,000–₹<span data-profile-budget>5,000</span></strong></span><button type="button" data-open-profile>Edit</button></div>
+              <div class="memory-control"><span><strong>Remember my style</strong><small>Use these notes in future edits</small></span><label class="switch"><input id="memory-toggle" type="checkbox" checked aria-label="Remember my style" /><span></span></label></div><button class="manage-profile" type="button" data-open-profile>Review or remove a style note <span>↗</span></button><p class="privacy-note"><span>⌑</span> You can edit or clear these notes at any time.</p>
+            </aside>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer"><span>INDEPENDENT PORTFOLIO CONCEPT · NOT AN OFFICIAL MYNTRA PRODUCT</span><a href="context.md">Product context</a><a href="plan.md">Project plan</a></footer>
+      <nav class="mobile-nav" aria-label="Mobile navigation"><button class="mobile-nav-link is-active" type="button" data-view="discover"><span>⌕</span><small>Discover</small></button><button class="mobile-nav-link" type="button" data-view="missions"><span>◷</span><small>Missions</small></button><button class="mobile-nav-link" type="button" data-open-profile><span>◎</span><small>My style</small></button></nav>
+    </div>
+
+    <dialog class="profile-dialog" id="profile-dialog" aria-labelledby="profile-title"><form id="profile-form"><div class="dialog-heading"><div><p class="eyebrow">YOUR NOTES, YOUR CALL</p><h2 id="profile-title">Your style profile</h2></div><button class="dialog-close" type="button" data-close-profile aria-label="Close style profile">×</button></div><p class="dialog-description">These preferences shape your edit. Change a note or turn memory off whenever you like.</p>
+      <label class="field-label" for="size-select">Clothing size</label><select id="size-select" name="size"><option>XS</option><option>S</option><option selected>M</option><option>L</option><option>XL</option></select>
+      <label class="field-label" for="palette-select">Color palette</label><select id="palette-select" name="palette"><option>Jewel tones</option><option>Pastels</option><option>Neutrals</option><option>Earth tones</option></select>
+      <label class="field-label" for="budget-select">Typical budget</label><select id="budget-select" name="budget"><option value="3000">Up to ₹3,000</option><option value="4000">Up to ₹4,000</option><option value="5000" selected>Up to ₹5,000</option><option value="8000">Up to ₹8,000</option></select>
+      <label class="dialog-memory"><span><strong>Remember my style</strong><small>Keep these notes for future sessions on this device.</small></span><input id="dialog-memory-toggle" type="checkbox" checked /></label>
+      <div class="dialog-actions"><button class="clear-memory" type="button" data-clear-memory>Clear saved notes</button><button class="primary-button" type="submit">Save preferences</button></div>
+    </form></dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
